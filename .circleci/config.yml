@@ -1,0 +1,17 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+workflows:
+  build:
+    jobs:
+      - build
+jobs:
+  build:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn build
