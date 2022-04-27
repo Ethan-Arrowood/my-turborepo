@@ -11,5 +11,5 @@ before_install:
 install:
   - pnpm install
 script:
-  - ls -la node_modules
+  - ls -la node_modules/.pnpm
   - pnpm build
