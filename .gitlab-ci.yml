@@ -1,5 +1,10 @@
-default:
-  image: node:latest
+image: node:latest
+
+stages:
+  - build
+
+build:
+  stage: build
   before_script:
     - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7.0.0-rc.9
     - pnpm config set store-dir .pnpm-store
@@ -9,11 +14,3 @@ default:
     key: "$CI_COMMIT_REF_SLUG"
     paths:
       - .pnpm-store
-
-stages:
-  - build
-
-build:
-  stage: build
-  script:
-    - pnpm build
